@@ -2,7 +2,7 @@ const button = document.getElementById("btn");
 const nameInput = document.getElementById("nameInput");
 const result = document.getElementById("result");
 
-button.addEventListener("click", function () {
+function greet() {
     const name = nameInput.value.trim();
 
     if (name === "") {
@@ -11,4 +11,14 @@ button.addEventListener("click", function () {
     }
 
     result.textContent = "Привет, " + name + "!";
+}
+
+// клик
+button.addEventListener("click", greet);
+
+// Enter
+nameInput.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        greet();
+    }
 });
