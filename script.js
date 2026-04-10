@@ -1,24 +1,42 @@
-const button = document.getElementById("btn");
-const nameInput = document.getElementById("nameInput");
-const result = document.getElementById("result");
+const taskInput = document.getElementById("taskInput");
+const addBtn = document.getElementById("addBtn");
+const taskList = document.getElementById("taskList");
 
-function greet() {
-    const name = nameInput.value.trim();
+function getTaskText() {
+    return taskInput.value.trim();
+}
 
-    if (name === "") {
-        result.textContent = "Пожалуйста, введите имя";
+function clearTaskInput() {
+    taskInput.value = "";
+    taskInput.focus();
+}
+
+function createTaskElement(taskText) {
+    const li = document.createElement("li");
+    li.textContent = taskText;
+    return li;
+}
+
+function addTask() {
+    const taskText = getTaskText();
+
+    if (taskText === "") {
+        taskInput.focus();
         return;
     }
 
-    result.textContent = "Привет, " + name + "!";
+    const taskElement = createTaskElement(taskText);
+    taskList.appendChild(taskElement);
+
+    clearTaskInput();
 }
 
-// клик
-button.addEventListener("click", greet);
+addBtn.addEventListener("click", addTask);
 
-// Enter
-nameInput.addEventListener("keydown", function(event) {
+taskInput.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
-        greet();
+        addTask();
     }
 });
+
+taskInput.focus();
