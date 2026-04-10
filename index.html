@@ -2,19 +2,19 @@
 <html>
 <head>
     <title>My First Web App</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <h1>Привет, мир 👋</h1>
     <p>Это мой первый веб-проект</p>
 
-    <button onclick="sayHello()">Нажми меня</button>
+    <input id="nameInput" type="text" placeholder="Введите имя">
+    <button id="btn">Приветствовать</button>
 
-    <script>
-        function sayHello() {
-            alert("Ты нажал кнопку 🚀");
-        }
-    </script>
+    <p id="result"></p>
+
+    <script src="script.js"></script>
 
 </body>
 </html>
